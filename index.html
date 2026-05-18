@@ -97,6 +97,7 @@
     .plan-features { list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:28px; }
     .plan-features li { display:flex; align-items:flex-start; gap:10px; font-size:.875rem; }
     .pilot-form-wrap { display:grid; grid-template-columns:.9fr 1.1fr; gap:32px; align-items:start; margin:56px auto 0; max-width:940px; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:32px; box-shadow:var(--shadow-sm); }
+    .pilot-form-wrap.is-active { border-color:var(--accent); box-shadow:0 0 0 3px rgba(249,115,22,.14),var(--shadow-md); }
     .pilot-form-copy h3 { font-size:1.35rem; margin-bottom:10px; }
     .pilot-form-copy p { color:var(--muted); font-size:.95rem; line-height:1.7; margin-bottom:18px; }
     .form-points { list-style:none; display:flex; flex-direction:column; gap:10px; color:var(--text); font-size:.9rem; }
@@ -139,7 +140,7 @@
         <li><a href="#pilot">Pilot</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
-      <a href="#pilot-form" class="btn btn-primary">Request free pilot</a>
+      <a href="#pilot-form" class="btn btn-primary" data-lead-cta>Request free pilot</a>
     </div>
   </nav>
 
@@ -150,7 +151,7 @@
         <h1>Stop losing customers to missed calls.</h1>
         <p class="lead">Built for home service businesses where the owner is on jobs, with customers, or unavailable when the phone rings. When you miss a call, Missed Call Agent texts back immediately, gathers the job details, and sends you a qualified lead summary.</p>
         <div class="hero-cta">
-          <a href="#pilot-form" class="btn btn-primary btn-lg">Request free 14-day pilot</a>
+          <a href="#pilot-form" class="btn btn-primary btn-lg" data-lead-cta>Request free 14-day pilot</a>
           <a href="#how-it-works" class="btn btn-outline btn-lg">See how it works</a>
         </div>
         <p class="hero-trust">HVAC-first pilot program · Guided onboarding · Existing phone setup compatibility review</p>
@@ -268,12 +269,12 @@
         <div class="pricing-card">
           <div class="plan-name">14-Day Pilot</div><div class="plan-price">Free</div><div class="plan-desc">Hands-on onboarding and live testing.</div>
           <ul class="plan-features"><li>Guided setup</li><li>Phone setup compatibility review</li><li>Live missed call test</li><li>Direct founder support</li></ul>
-          <a href="#pilot-form" class="btn btn-outline btn-full">Request free pilot</a>
+          <a href="#pilot-form" class="btn btn-outline btn-full" data-lead-cta>Request free pilot</a>
         </div>
         <div class="pricing-card featured">
           <div class="plan-name">After Pilot</div><div class="plan-price"><sup>$</sup>199<sub>/mo</sub></div><div class="plan-desc">Keep it active if the pilot proves value.</div>
           <ul class="plan-features"><li>Missed call recovery</li><li>SMS intake conversation</li><li>Lead summary and urgency routing</li><li>Early pilot pricing may be available</li></ul>
-          <a href="#pilot-form" class="btn btn-primary btn-full">Request free pilot</a>
+          <a href="#pilot-form" class="btn btn-primary btn-full" data-lead-cta>Request free pilot</a>
         </div>
       </div>
       <div class="pilot-form-wrap" id="pilot-form">
@@ -364,7 +365,7 @@
       <span class="section-label" style="color:#f97316;">Get started</span>
       <h2>Your next missed call could be your next booked job.</h2>
       <p>If you run a home service business, missed calls are costing you revenue.  Test it out with a free pilot!</p>
-      <a href="#pilot-form" class="btn btn-primary">Request free pilot</a>
+      <a href="#pilot-form" class="btn btn-primary" data-lead-cta>Request free pilot</a>
     </div>
   </section>
 
@@ -375,7 +376,29 @@
     </div>
   </footer>
   <script>
+    const leadFormWrap = document.querySelector('#pilot-form');
     const leadForm = document.querySelector('.lead-form');
+
+    document.querySelectorAll('[data-lead-cta]').forEach((cta) => {
+      cta.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (!leadFormWrap || !leadForm) return;
+
+        leadFormWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        leadFormWrap.classList.add('is-active');
+        window.history.replaceState(null, '', '#pilot-form');
+
+        window.setTimeout(() => {
+          const firstField = leadForm.querySelector('input:not([type="hidden"]), select, textarea');
+          if (firstField) firstField.focus({ preventScroll: true });
+        }, 450);
+
+        window.setTimeout(() => {
+          leadFormWrap.classList.remove('is-active');
+        }, 2200);
+      });
+    });
+
     if (leadForm) {
       const statusEl = leadForm.querySelector('.form-status');
       leadForm.addEventListener('submit', async (event) => {
