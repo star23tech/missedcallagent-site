@@ -96,6 +96,23 @@
     .plan-desc { font-size:.875rem; color:var(--muted); margin-bottom:24px; padding-bottom:24px; border-bottom:1px solid var(--border); }
     .plan-features { list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:28px; }
     .plan-features li { display:flex; align-items:flex-start; gap:10px; font-size:.875rem; }
+    .pilot-form-wrap { display:grid; grid-template-columns:.9fr 1.1fr; gap:32px; align-items:start; margin:56px auto 0; max-width:940px; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:32px; box-shadow:var(--shadow-sm); }
+    .pilot-form-copy h3 { font-size:1.35rem; margin-bottom:10px; }
+    .pilot-form-copy p { color:var(--muted); font-size:.95rem; line-height:1.7; margin-bottom:18px; }
+    .form-points { list-style:none; display:flex; flex-direction:column; gap:10px; color:var(--text); font-size:.9rem; }
+    .form-points li { display:flex; gap:10px; align-items:flex-start; }
+    .lead-form { display:grid; gap:14px; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .form-field { display:flex; flex-direction:column; gap:6px; }
+    .form-field label { font-size:.82rem; font-weight:600; color:var(--text); }
+    .form-field input,.form-field select,.form-field textarea { width:100%; border:1.5px solid var(--border); border-radius:10px; padding:12px 13px; font:inherit; color:var(--text); background:white; transition:border-color .15s,box-shadow .15s; }
+    .form-field textarea { min-height:118px; resize:vertical; }
+    .form-field input:focus,.form-field select:focus,.form-field textarea:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(249,115,22,.14); }
+    .form-note { font-size:.78rem; color:var(--muted); line-height:1.5; }
+    .form-status { display:none; border-radius:10px; padding:11px 13px; font-size:.88rem; font-weight:600; }
+    .form-status.success { display:block; background:var(--green-lt); color:var(--green); border:1px solid #bbf7d0; }
+    .form-status.error { display:block; background:#fef2f2; color:#b91c1c; border:1px solid #fecaca; }
+    .hp-field { position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden; }
     .faq-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:56px; }
     .faq-item { background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:24px; }
     .faq-item h3 { margin-bottom:10px; font-size:1rem; }
@@ -108,8 +125,8 @@
     .footer-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
     .footer-logo { color:white; font-weight:700; }
     footer p { font-size:.82rem; }
-    @media (max-width:900px) { .hero .container,.problem .container{grid-template-columns:1fr;gap:48px;} .sms-mockup{margin:0 auto;} .steps,.features-grid,.pricing-grid{grid-template-columns:1fr;} .audience-grid{grid-template-columns:repeat(2,1fr);} .faq-grid{grid-template-columns:1fr;} .step-connector{display:none;} .nav-links{display:none;} }
-    @media (max-width:600px) { section{padding:64px 20px;} .audience-grid{grid-template-columns:1fr 1fr;} }
+    @media (max-width:900px) { .hero .container,.problem .container{grid-template-columns:1fr;gap:48px;} .sms-mockup{margin:0 auto;} .steps,.features-grid,.pricing-grid,.pilot-form-wrap{grid-template-columns:1fr;} .audience-grid{grid-template-columns:repeat(2,1fr);} .faq-grid{grid-template-columns:1fr;} .step-connector{display:none;} .nav-links{display:none;} }
+    @media (max-width:600px) { section{padding:64px 20px;} .audience-grid{grid-template-columns:1fr 1fr;} .form-row{grid-template-columns:1fr;} .pilot-form-wrap{padding:22px;} }
   </style>
 </head>
 <body>
@@ -122,7 +139,7 @@
         <li><a href="#pilot">Pilot</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
-      <a href="#pilot" class="btn btn-primary">Request free pilot</a>
+      <a href="#pilot-form" class="btn btn-primary">Request free pilot</a>
     </div>
   </nav>
 
@@ -133,7 +150,7 @@
         <h1>Stop losing customers to missed calls.</h1>
         <p class="lead">Built for home service businesses where the owner is on jobs, with customers, or unavailable when the phone rings. When you miss a call, Missed Call Agent texts back immediately, gathers the job details, and sends you a qualified lead summary.</p>
         <div class="hero-cta">
-          <a href="#pilot" class="btn btn-primary btn-lg">Request free 14-day pilot</a>
+          <a href="#pilot-form" class="btn btn-primary btn-lg">Request free 14-day pilot</a>
           <a href="#how-it-works" class="btn btn-outline btn-lg">See how it works</a>
         </div>
         <p class="hero-trust">HVAC-first pilot program · Guided onboarding · Existing phone setup compatibility review</p>
@@ -251,13 +268,79 @@
         <div class="pricing-card">
           <div class="plan-name">14-Day Pilot</div><div class="plan-price">Free</div><div class="plan-desc">Hands-on onboarding and live testing.</div>
           <ul class="plan-features"><li>Guided setup</li><li>Phone setup compatibility review</li><li>Live missed call test</li><li>Direct founder support</li></ul>
-          <a href="#" class="btn btn-outline btn-full">Request free pilot</a>
+          <a href="#pilot-form" class="btn btn-outline btn-full">Request free pilot</a>
         </div>
         <div class="pricing-card featured">
           <div class="plan-name">After Pilot</div><div class="plan-price"><sup>$</sup>199<sub>/mo</sub></div><div class="plan-desc">Keep it active if the pilot proves value.</div>
           <ul class="plan-features"><li>Missed call recovery</li><li>SMS intake conversation</li><li>Lead summary and urgency routing</li><li>Early pilot pricing may be available</li></ul>
-          <a href="#" class="btn btn-primary btn-full">Request free pilot</a>
+          <a href="#pilot-form" class="btn btn-primary btn-full">Request free pilot</a>
         </div>
+      </div>
+      <div class="pilot-form-wrap" id="pilot-form">
+        <div class="pilot-form-copy">
+          <span class="section-label">Request access</span>
+          <h3>Tell me where missed calls are costing you.</h3>
+          <p>Send a few details and I will follow up about setup fit, phone forwarding, and whether the pilot makes sense for your business.</p>
+          <ul class="form-points">
+            <li><span>&check;</span><span>Saved directly to your private lead database.</span></li>
+            <li><span>&check;</span><span>No payment info needed for the pilot.</span></li>
+            <li><span>&check;</span><span>Best fit for small home service shops.</span></li>
+          </ul>
+        </div>
+        <form class="lead-form" method="post" action="/api/lead">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="name">Name</label>
+              <input id="name" name="name" autocomplete="name" required />
+            </div>
+            <div class="form-field">
+              <label for="business_name">Business name</label>
+              <input id="business_name" name="business_name" autocomplete="organization" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" autocomplete="tel" required />
+            </div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="trade">Business type</label>
+              <select id="trade" name="trade" required>
+                <option value="">Select one</option>
+                <option>HVAC</option>
+                <option>Plumbing</option>
+                <option>Electrical</option>
+                <option>Garage Door</option>
+                <option>Locksmith</option>
+                <option>Appliance Repair</option>
+                <option>Pest Control</option>
+                <option>Painting</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="city">City / service area</label>
+              <input id="city" name="city" autocomplete="address-level2" />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="message">What should I know?</label>
+            <textarea id="message" name="message" placeholder="Current phone setup, call volume, after-hours problem, or anything else useful."></textarea>
+          </div>
+          <div class="hp-field" aria-hidden="true">
+            <label for="website">Website</label>
+            <input id="website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+          <div class="form-status" role="status" aria-live="polite"></div>
+          <button class="btn btn-primary btn-full" type="submit">Send pilot request</button>
+          <p class="form-note">Submissions are stored in SQLite on the server. The form does not expose database access or server credentials.</p>
+        </form>
       </div>
     </div>
   </section>
@@ -281,7 +364,7 @@
       <span class="section-label" style="color:#f97316;">Get started</span>
       <h2>Your next missed call could be your next booked job.</h2>
       <p>If you run a home service business, missed calls are costing you revenue.  Test it out with a free pilot!</p>
-      <a href="#pilot" class="btn btn-primary">Request free pilot</a>
+      <a href="#pilot-form" class="btn btn-primary">Request free pilot</a>
     </div>
   </section>
 
@@ -291,5 +374,41 @@
       <p>Built for owner-operated home service businesses.</p>
     </div>
   </footer>
+  <script>
+    const leadForm = document.querySelector('.lead-form');
+    if (leadForm) {
+      const statusEl = leadForm.querySelector('.form-status');
+      leadForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        statusEl.className = 'form-status';
+        statusEl.textContent = '';
+
+        const submitButton = leadForm.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+
+        try {
+          const response = await fetch(leadForm.action, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(leadForm)
+          });
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            throw new Error(result.error || 'Please check the form and try again.');
+          }
+          leadForm.reset();
+          statusEl.className = 'form-status success';
+          statusEl.textContent = 'Thanks. Your pilot request was sent.';
+        } catch (error) {
+          statusEl.className = 'form-status error';
+          statusEl.textContent = error.message || 'Something went wrong. Please try again.';
+        } finally {
+          submitButton.disabled = false;
+          submitButton.textContent = 'Send pilot request';
+        }
+      });
+    }
+  </script>
 </body>
 </html>
