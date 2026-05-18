@@ -411,14 +411,24 @@
         submitButton.textContent = 'Sending...';
 
         try {
+          const formBody = new URLSearchParams(new FormData(leadForm));
           const response = await fetch(leadForm.action, {
             method: 'POST',
-            headers: { 'Accept': 'application/json' },
-            body: new FormData(leadForm)
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: formBody
           });
-          const result = await response.json().catch(() => ({}));
+          const responseText = await response.text();
+          let result = {};
+          try {
+            result = responseText ? JSON.parse(responseText) : {};
+          } catch {
+            result = { error: responseText.trim() };
+          }
           if (!response.ok) {
-            throw new Error(result.error || 'Please check the form and try again.');
+            throw new Error(result.error || `Form submission failed with HTTP ${response.status}.`);
           }
           leadForm.reset();
           statusEl.className = 'form-status success';
