@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(python --version)",
+      "PowerShell(node --version)",
+      "PowerShell(npm --version)",
+      "PowerShell(py --version)",
+      "PowerShell(pip --version)",
+      "PowerShell(New-Item -ItemType Directory -Path \"C:\\\\Users\\\\JD_PC\\\\Documents\\\\AI_Projects\\\\missedcallagent-site\\\\backend\" -Force)",
+      "PowerShell(New-Item -ItemType Directory -Path \"C:\\\\Users\\\\JD_PC\\\\Documents\\\\AI_Projects\\\\missedcallagent-site\\\\deploy\" -Force)"
+    ]
+  }
+}

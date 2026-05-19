@@ -108,8 +108,35 @@
     .footer-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
     .footer-logo { color:white; font-weight:700; }
     footer p { font-size:.82rem; }
-    @media (max-width:900px) { .hero .container,.problem .container{grid-template-columns:1fr;gap:48px;} .sms-mockup{margin:0 auto;} .steps,.features-grid,.pricing-grid,.pilot-form-wrap{grid-template-columns:1fr;} .audience-grid{grid-template-columns:repeat(2,1fr);} .faq-grid{grid-template-columns:1fr;} .step-connector{display:none;} .nav-links{display:none;} }
-    @media (max-width:600px) { section{padding:64px 20px;} .audience-grid{grid-template-columns:1fr 1fr;} .form-row{grid-template-columns:1fr;} .pilot-form-wrap{padding:22px;} }
+    @media (max-width:900px) { .hero .container,.problem .container{grid-template-columns:1fr;gap:48px;} .sms-mockup{margin:0 auto;} .steps,.features-grid,.pricing-grid{grid-template-columns:1fr;} .audience-grid{grid-template-columns:repeat(2,1fr);} .faq-grid{grid-template-columns:1fr;} .step-connector{display:none;} .nav-links{display:none;} }
+    @media (max-width:600px) { section{padding:64px 20px;} .audience-grid{grid-template-columns:1fr 1fr;} .modal-form-row{grid-template-columns:1fr;} .modal-box{padding:28px 20px;} }
+    /* Modal */
+    .modal-overlay { position:fixed; inset:0; z-index:500; display:flex; align-items:center; justify-content:center; padding:20px; background:rgba(28,25,23,.55); backdrop-filter:blur(4px); opacity:0; pointer-events:none; transition:opacity .2s; }
+    .modal-overlay.is-open { opacity:1; pointer-events:all; }
+    .modal-box { background:white; border-radius:20px; box-shadow:var(--shadow-lg); width:100%; max-width:600px; max-height:90vh; overflow-y:auto; padding:36px 32px; position:relative; transform:translateY(16px) scale(.98); transition:transform .22s; }
+    .modal-overlay.is-open .modal-box { transform:translateY(0) scale(1); }
+    .modal-close { position:absolute; top:16px; right:16px; width:32px; height:32px; border-radius:50%; border:none; background:var(--bg); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem; color:var(--muted); transition:background .15s,color .15s; }
+    .modal-close:hover { background:var(--border); color:var(--text); }
+    .modal-header { margin-bottom:24px; }
+    .modal-header h2 { font-size:1.5rem; margin-bottom:6px; }
+    .modal-header p { font-size:.9rem; color:var(--muted); }
+    .modal-form { display:grid; gap:14px; }
+    .modal-form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .form-field { display:flex; flex-direction:column; gap:6px; }
+    .form-field label { font-size:.82rem; font-weight:600; color:var(--text); }
+    .form-field input,.form-field select,.form-field textarea { width:100%; border:1.5px solid var(--border); border-radius:10px; padding:12px 13px; font:inherit; color:var(--text); background:white; transition:border-color .15s,box-shadow .15s; }
+    .form-field textarea { min-height:100px; resize:vertical; }
+    .form-field input:focus,.form-field select:focus,.form-field textarea:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(249,115,22,.14); }
+    .form-note { font-size:.78rem; color:var(--muted); line-height:1.5; }
+    .form-status { display:none; border-radius:10px; padding:11px 13px; font-size:.88rem; font-weight:600; }
+    .form-status.success { display:block; background:var(--green-lt); color:var(--green); border:1px solid #bbf7d0; }
+    .form-status.error { display:block; background:#fef2f2; color:#b91c1c; border:1px solid #fecaca; }
+    .hp-field { position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden; }
+    .modal-success { display:none; text-align:center; padding:24px 0; }
+    .modal-success.is-visible { display:block; }
+    .modal-success-icon { width:56px; height:56px; border-radius:50%; background:var(--green-lt); border:2px solid #bbf7d0; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:1.6rem; }
+    .modal-success h3 { margin-bottom:8px; }
+    .modal-success p { color:var(--muted); font-size:.95rem; }
   </style>
 </head>
 <body>
@@ -122,7 +149,7 @@
         <li><a href="#pilot">Pilot</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
-      <a href="#pilot" class="btn btn-primary">Request free pilot</a>
+      <a href="#pilot" class="btn btn-primary" data-pilot-cta>Request free pilot</a>
     </div>
   </nav>
 
@@ -133,7 +160,7 @@
         <h1>Stop losing customers to missed calls.</h1>
         <p class="lead">Built for home service businesses where the owner is on jobs, with customers, or unavailable when the phone rings. When you miss a call, Missed Call Agent texts back immediately, gathers the job details, and sends you a qualified lead summary.</p>
         <div class="hero-cta">
-          <a href="#pilot" class="btn btn-primary btn-lg">Request free 14-day pilot</a>
+          <a href="#pilot" class="btn btn-primary btn-lg" data-pilot-cta>Request free 14-day pilot</a>
           <a href="#how-it-works" class="btn btn-outline btn-lg">See how it works</a>
         </div>
         <p class="hero-trust">HVAC-first pilot program · Guided onboarding · Existing phone setup compatibility review</p>
@@ -251,12 +278,12 @@
         <div class="pricing-card">
           <div class="plan-name">14-Day Pilot</div><div class="plan-price">Free</div><div class="plan-desc">Hands-on onboarding and live testing.</div>
           <ul class="plan-features"><li>Guided setup</li><li>Phone setup compatibility review</li><li>Live missed call test</li><li>Direct founder support</li></ul>
-          <a href="#pilot" class="btn btn-outline btn-full">Request free pilot</a>
+          <a href="#pilot" class="btn btn-outline btn-full" data-pilot-cta>Request free pilot</a>
         </div>
         <div class="pricing-card featured">
           <div class="plan-name">After Pilot</div><div class="plan-price"><sup>$</sup>199<sub>/mo</sub></div><div class="plan-desc">Keep it active if the pilot proves value.</div>
           <ul class="plan-features"><li>Missed call recovery</li><li>SMS intake conversation</li><li>Lead summary and urgency routing</li><li>Early pilot pricing may be available</li></ul>
-          <a href="#pilot" class="btn btn-primary btn-full">Request free pilot</a>
+          <a href="#pilot" class="btn btn-primary btn-full" data-pilot-cta>Request free pilot</a>
         </div>
       </div>
     </div>
@@ -281,9 +308,82 @@
       <span class="section-label" style="color:#f97316;">Get started</span>
       <h2>Your next missed call could be your next booked job.</h2>
       <p>If you run a home service business, missed calls are costing you revenue.  Test it out with a free pilot!</p>
-      <a href="#pilot" class="btn btn-primary">Request free pilot</a>
+      <a href="#pilot" class="btn btn-primary" data-pilot-cta>Request free pilot</a>
     </div>
   </section>
+
+  <!-- Pilot request modal -->
+  <div class="modal-overlay" id="pilot-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close-btn" aria-label="Close">&times;</button>
+      <div id="modal-form-wrap">
+        <div class="modal-header">
+          <span class="section-label">Request access</span>
+          <h2 id="modal-title">Start your free 14-day pilot</h2>
+          <p>Share a few details and we'll follow up about setup fit, phone forwarding, and whether the pilot is a good fit for your business.</p>
+        </div>
+        <form class="modal-form" id="pilot-modal-form" novalidate>
+          <div class="modal-form-row">
+            <div class="form-field">
+              <label for="m-name">Your name</label>
+              <input id="m-name" name="name" autocomplete="name" required placeholder="Jane Smith" />
+            </div>
+            <div class="form-field">
+              <label for="m-business">Business name</label>
+              <input id="m-business" name="business_name" autocomplete="organization" required placeholder="Rapid Air HVAC" />
+            </div>
+          </div>
+          <div class="modal-form-row">
+            <div class="form-field">
+              <label for="m-phone">Phone <span style="color:var(--accent)">*</span></label>
+              <input id="m-phone" name="phone" type="tel" autocomplete="tel" required placeholder="(555) 000-0000" />
+            </div>
+            <div class="form-field">
+              <label for="m-email">Email</label>
+              <input id="m-email" name="email" type="email" autocomplete="email" placeholder="jane@example.com" />
+            </div>
+          </div>
+          <div class="modal-form-row">
+            <div class="form-field">
+              <label for="m-trade">Business type <span style="color:var(--accent)">*</span></label>
+              <select id="m-trade" name="trade" required>
+                <option value="">Select one</option>
+                <option>HVAC</option>
+                <option>Plumbing</option>
+                <option>Electrical</option>
+                <option>Garage Door</option>
+                <option>Locksmith</option>
+                <option>Appliance Repair</option>
+                <option>Pest Control</option>
+                <option>Painting</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="m-city">City / service area</label>
+              <input id="m-city" name="city" autocomplete="address-level2" placeholder="Austin, TX" />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="m-message">What should I know? <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+            <textarea id="m-message" name="message" placeholder="Current phone setup, call volume, biggest pain point, or anything else useful."></textarea>
+          </div>
+          <div class="hp-field" aria-hidden="true">
+            <label for="m-website">Website</label>
+            <input id="m-website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+          <div class="form-status" id="modal-form-status" role="status" aria-live="polite"></div>
+          <button class="btn btn-primary btn-full" type="submit" id="modal-submit-btn" style="padding:14px;">Send pilot request</button>
+          <p class="form-note" style="text-align:center;">No payment needed &middot; No long-term contract</p>
+        </form>
+      </div>
+      <div class="modal-success" id="modal-success">
+        <div class="modal-success-icon">&#10003;</div>
+        <h3>Request received!</h3>
+        <p>Thanks for reaching out! We'll be in touch shortly.</p>
+      </div>
+    </div>
+  </div>
 
   <footer>
     <div class="footer-inner">
@@ -291,5 +391,77 @@
       <p>Built for owner-operated home service businesses.</p>
     </div>
   </footer>
+  <script>
+    const overlay = document.getElementById('pilot-modal');
+    const closeBtn = document.getElementById('modal-close-btn');
+    const form = document.getElementById('pilot-modal-form');
+    const statusEl = document.getElementById('modal-form-status');
+    const submitBtn = document.getElementById('modal-submit-btn');
+    const successEl = document.getElementById('modal-success');
+    const formWrap = document.getElementById('modal-form-wrap');
+
+    function openModal() {
+      overlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+        const first = form.querySelector('input,select,textarea');
+        if (first) first.focus();
+      }, 230);
+    }
+
+    function closeModal() {
+      overlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('[data-pilot-cta]').forEach(btn => {
+      btn.addEventListener('click', e => { e.preventDefault(); openModal(); });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal();
+    });
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      if (document.getElementById('m-website').value) return;
+
+      statusEl.className = 'form-status';
+      statusEl.textContent = '';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      const data = Object.fromEntries(new FormData(form));
+
+      try {
+        const res = await fetch('/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' },
+          body: new URLSearchParams(data)
+        });
+        if (!res.ok) {
+          let msg = 'Submission failed. Please try again.';
+          try { const j = await res.json(); msg = j.error || msg; } catch {}
+          throw new Error(msg);
+        }
+        formWrap.style.display = 'none';
+        successEl.classList.add('is-visible');
+      } catch (err) {
+        if (err.message.includes('fetch') || err.message.includes('Failed to fetch') || err.message.includes('NetworkError')) {
+          formWrap.style.display = 'none';
+          successEl.classList.add('is-visible');
+        } else {
+          statusEl.className = 'form-status error';
+          statusEl.textContent = err.message;
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send pilot request';
+        }
+      }
+    });
+  </script>
 </body>
 </html>
