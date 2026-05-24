@@ -27,6 +27,42 @@ const SCHEMA = [
       { '@type': 'ListItem', position: 2, name: 'Plumbing Missed Call Solution', item: 'https://missedcallagent.com/plumbing-missed-call-solution' },
     ],
   },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Does it work for emergency plumbing calls?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Yes. The intake identifies urgency — active leaks, flooding, no hot water — and flags emergency leads in the summary so you know which callbacks are most time-sensitive.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Will it capture the service address?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Yes. The intake conversation asks for the service address and captures it as part of the lead summary — so you have everything you need to dispatch immediately on emergency jobs.' },
+      },
+      {
+        '@type': 'Question',
+        name: "What if it's a burst pipe at 2am?",
+        acceptedAnswer: { '@type': 'Answer', text: 'All calls are handled the same way around the clock. The system responds immediately and you get an instant lead notification — critical for capturing high-value overnight emergency calls.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Do I need to change my phone number?',
+        acceptedAnswer: { '@type': 'Answer', text: 'No. You use your existing business number through call forwarding configuration. No changes to your phone setup, no new number for customers to learn.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can I customize what it asks plumbing customers?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Yes. The intake questions, first response message, and AI tone are all customizable to match how your plumbing business operates.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Is there a long-term contract?',
+        acceptedAnswer: { '@type': 'Answer', text: 'No. Start with a free 14-day pilot. Continue only if the pilot proves value for your plumbing business. No contracts, no lock-in.' },
+      },
+    ],
+  },
 ]
 
 export default function PlumbingPage() {
@@ -40,6 +76,7 @@ export default function PlumbingPage() {
         description="Stop losing plumbing customers when you're on a job or under a sink. Missed Call Agent texts back missed calls instantly, capturing emergency plumbing leads 24/7."
         canonical="https://missedcallagent.com/plumbing-missed-call-solution"
         schema={SCHEMA}
+        ogImage="https://missedcallagent.com/og-image.png"
       />
 
       <Nav onOpenModal={openModal} />

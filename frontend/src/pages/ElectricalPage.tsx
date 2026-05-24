@@ -27,6 +27,42 @@ const SCHEMA = [
       { '@type': 'ListItem', position: 2, name: 'Electrical Missed Call Solution', item: 'https://missedcallagent.com/electrical-missed-call-solution' },
     ],
   },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Does it handle electrical emergencies?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Yes. Urgent situations are flagged in the lead summary — burning smells, power outages, sparking outlets — so you can prioritize callbacks on safety-critical calls.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can it help qualify commercial vs. residential jobs?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Yes. The intake can ask about job type and scope so you have full context before calling back — helping you quote more accurately and close more work on the first call.' },
+      },
+      {
+        '@type': 'Question',
+        name: "What if I miss a call while I'm in a panel or attic?",
+        acceptedAnswer: { '@type': 'Answer', text: "That's exactly what this is built for. You get a full lead summary delivered to you — name, job type, urgency, and address — so you can call back with confidence." },
+      },
+      {
+        '@type': 'Question',
+        name: 'Do my customers need to download anything?',
+        acceptedAnswer: { '@type': 'Answer', text: 'No. Customers reply by standard SMS. No app download, no account creation, no friction on their end.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can I customize what it asks electrical customers?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Yes. The intake questions, first response message, and AI tone are all customizable to match your electrical business and the types of work you take on.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Is there a long-term contract?',
+        acceptedAnswer: { '@type': 'Answer', text: 'No. Start with a free 14-day pilot. Continue only if the pilot proves value for your electrical business. No contracts, no lock-in.' },
+      },
+    ],
+  },
 ]
 
 export default function ElectricalPage() {
@@ -40,6 +76,7 @@ export default function ElectricalPage() {
         description="Stop losing electrical jobs to missed calls. Missed Call Agent texts back instantly when electricians miss calls, capturing residential and commercial electrical leads 24/7."
         canonical="https://missedcallagent.com/electrical-missed-call-solution"
         schema={SCHEMA}
+        ogImage="https://missedcallagent.com/og-image.png"
       />
 
       <Nav onOpenModal={openModal} />

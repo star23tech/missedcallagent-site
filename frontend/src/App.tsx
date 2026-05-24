@@ -26,6 +26,42 @@ const SCHEMA = [
       priceCurrency: 'USD',
     },
   },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'How does it connect to my phone number?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Missed Call Agent works with your existing business phone number through call forwarding. When a call goes unanswered, the system intercepts it and sends the SMS text.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can I customize what the bot says?',
+        acceptedAnswer: { '@type': 'Answer', text: "Yes. You control the first message, the AI's tone (professional, friendly, casual), and the types of questions it asks. You can even write a fully custom AI prompt to match your business perfectly." },
+      },
+      {
+        '@type': 'Question',
+        name: "Will customers know they're texting a bot?",
+        acceptedAnswer: { '@type': 'Answer', text: "The first message is clearly from your business, not posed as a human. Most customers don't mind — they care that someone responded quickly. You can customize the tone and wording to match your brand." },
+      },
+      {
+        '@type': 'Question',
+        name: 'Do customers need an app?',
+        acceptedAnswer: { '@type': 'Answer', text: 'No. The customer receives and replies by normal SMS.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'What information does it collect?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Name, callback number, address, service issue, urgency, and any notes needed for a useful callback.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Is there a long-term contract?',
+        acceptedAnswer: { '@type': 'Answer', text: 'No. Start with a free 14-day pilot. Continue only if it proves useful.' },
+      },
+    ],
+  },
 ]
 
 function App() {
@@ -43,6 +79,7 @@ function App() {
         description="Missed Call Agent instantly texts back missed calls for HVAC, plumbing, and electrical businesses. Capture qualified leads 24/7 with AI-powered SMS intake."
         canonical="https://missedcallagent.com/"
         schema={SCHEMA}
+        ogImage="https://missedcallagent.com/og-image.png"
       />
 
       <Nav onOpenModal={openModal} />

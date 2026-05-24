@@ -27,6 +27,42 @@ const SCHEMA = [
       { '@type': 'ListItem', position: 2, name: 'HVAC Missed Call Solution', item: 'https://missedcallagent.com/hvac-missed-call-solution' },
     ],
   },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Does it handle emergency HVAC calls?',
+        acceptedAnswer: { '@type': 'Answer', text: "Yes. The intake identifies urgency — things like 'AC not working' in summer or 'no heat' in winter — and flags emergency leads in the summary so you know which callbacks are time-critical." },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can I customize it for HVAC?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Yes. You can customize the first response message, follow-up questions, and AI tone. You can even set different scripts for cooling season versus heating season.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'What if a customer calls after 5pm?',
+        acceptedAnswer: { '@type': 'Answer', text: 'All calls are handled the same way regardless of time. The system responds immediately after-hours and you get an instant lead notification — critical for evening emergency HVAC calls.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Does this replace my receptionist?',
+        acceptedAnswer: { '@type': 'Answer', text: "No. It fills the gap when you can't answer — on service calls, in attics, driving between jobs, or after hours. It's a safety net for when you're unavailable, not a full staff replacement." },
+      },
+      {
+        '@type': 'Question',
+        name: 'How does it connect to my business phone?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Through call forwarding. When a call goes unanswered after your specified number of rings, your carrier forwards it to the Missed Call Agent system, which handles the intake and sends you the lead.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Is there a long-term contract?',
+        acceptedAnswer: { '@type': 'Answer', text: 'No. Start with a free 14-day pilot. Continue only if the pilot proves value for your HVAC business. No contracts, no lock-in.' },
+      },
+    ],
+  },
 ]
 
 export default function HvacPage() {
@@ -40,6 +76,7 @@ export default function HvacPage() {
         description="Stop losing HVAC customers to missed calls. Missed Call Agent instantly texts back HVAC missed calls 24/7, capturing emergency AC and heating leads when you're on the job."
         canonical="https://missedcallagent.com/hvac-missed-call-solution"
         schema={SCHEMA}
+        ogImage="https://missedcallagent.com/og-image.png"
       />
 
       <Nav onOpenModal={openModal} />

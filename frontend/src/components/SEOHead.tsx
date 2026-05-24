@@ -7,19 +7,45 @@ interface Props {
   description: string
   canonical: string
   schema?: Schema | Schema[]
+  ogImage?: string
 }
 
-export default function SEOHead({ title, description, canonical, schema }: Props) {
+function setMetaName(name: string, content: string) {
+  let el = document.querySelector<HTMLMetaElement>(`meta[name="${name}"]`)
+  if (!el) {
+    el = document.createElement('meta')
+    el.setAttribute('name', name)
+    document.head.appendChild(el)
+  }
+  el.content = content
+}
+
+function setMetaProp(property: string, content: string) {
+  let el = document.querySelector<HTMLMetaElement>(`meta[property="${property}"]`)
+  if (!el) {
+    el = document.createElement('meta')
+    el.setAttribute('property', property)
+    document.head.appendChild(el)
+  }
+  el.content = content
+}
+
+export default function SEOHead({ title, description, canonical, schema, ogImage }: Props) {
   useEffect(() => {
     document.title = title
 
-    let metaDesc = document.querySelector<HTMLMetaElement>('meta[name="description"]')
-    if (!metaDesc) {
-      metaDesc = document.createElement('meta')
-      metaDesc.name = 'description'
-      document.head.appendChild(metaDesc)
-    }
-    metaDesc.content = description
+    setMetaName('description', description)
+
+    setMetaProp('og:type', 'website')
+    setMetaProp('og:title', title)
+    setMetaProp('og:description', description)
+    setMetaProp('og:url', canonical)
+    if (ogImage) setMetaProp('og:image', ogImage)
+
+    setMetaName('twitter:card', 'summary_large_image')
+    setMetaName('twitter:title', title)
+    setMetaName('twitter:description', description)
+    if (ogImage) setMetaName('twitter:image', ogImage)
 
     let canonicalEl = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
     if (!canonicalEl) {
@@ -36,7 +62,7 @@ export default function SEOHead({ title, description, canonical, schema }: Props
       script.textContent = JSON.stringify(schema)
       document.head.appendChild(script)
     }
-  }, [title, description, canonical, schema])
+  }, [title, description, canonical, schema, ogImage])
 
   return null
 }
