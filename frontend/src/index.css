@@ -154,6 +154,37 @@ footer p { font-size:.82rem; }
   .modal-box { padding:28px 20px; }
 }
 
+/* Breadcrumb */
+.breadcrumb-bar { background:white; border-bottom:1px solid var(--border); padding:10px 24px; }
+.breadcrumb { max-width:1100px; margin:0 auto; display:flex; align-items:center; gap:8px; font-size:.82rem; color:var(--muted); }
+.breadcrumb a { color:var(--muted); text-decoration:none; transition:color .15s; }
+.breadcrumb a:hover { color:var(--text); }
+
+/* Vertical hero (single column) */
+.hero-vert .container { display:block; }
+.hero-vert-content { max-width:760px; }
+
+/* Industry solutions section */
+.industry-solutions { background:white; }
+
+/* Solution cards (feature-card as link) */
+.solution-card { text-decoration:none; color:inherit; display:block; transition:box-shadow .15s,transform .1s; }
+.solution-card:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); }
+.solution-emoji { font-size:2rem; margin-bottom:12px; }
+.solution-link { display:inline-block; margin-top:12px; font-size:.875rem; color:var(--accent); font-weight:600; }
+
+/* Other solutions section at bottom of vertical pages */
+.other-solutions { background:white; }
+.other-solutions-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; max-width:600px; margin:48px auto 0; }
+.solution-link-card { text-decoration:none; color:inherit; transition:box-shadow .15s,transform .1s; }
+.solution-link-card:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); }
+.solution-link-card p { font-size:.82rem; color:var(--muted); margin-top:4px; }
+
+/* Footer nav */
+.footer-nav { display:flex; gap:20px; flex-wrap:wrap; align-items:center; }
+.footer-nav a { color:#a8a29e; text-decoration:none; font-size:.82rem; transition:color .15s; }
+.footer-nav a:hover { color:white; }
+
 /* Admin */
 .admin-login-wrap { min-height:100vh; display:flex; align-items:center; justify-content:center; background:var(--bg); padding:24px; }
 .admin-login-box { background:white; border:1px solid var(--border); border-radius:20px; padding:40px 36px; width:100%; max-width:380px; box-shadow:var(--shadow-md); }

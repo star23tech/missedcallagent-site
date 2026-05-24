@@ -1,5 +1,68 @@
 import { useState } from 'react'
+import Nav from './components/Nav'
+import Footer from './components/Footer'
+import SEOHead from './components/SEOHead'
 import PilotModal from './PilotModal'
+
+const SCHEMA = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Missed Call Agent',
+    url: 'https://missedcallagent.com',
+    description: 'AI-powered missed call text back service for home service businesses',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Missed Call Agent',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Any',
+    description: 'Missed Call Agent instantly texts back missed calls for HVAC, plumbing, and electrical businesses. Capture qualified leads 24/7 with AI-powered SMS intake.',
+    url: 'https://missedcallagent.com',
+    offers: {
+      '@type': 'Offer',
+      price: '199',
+      priceCurrency: 'USD',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'How does it connect to my phone number?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Missed Call Agent works with your existing business phone number through call forwarding. When a call goes unanswered, the system intercepts it and sends the SMS text.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can I customize what the bot says?',
+        acceptedAnswer: { '@type': 'Answer', text: "Yes. You control the first message, the AI's tone (professional, friendly, casual), and the types of questions it asks. You can even write a fully custom AI prompt to match your business perfectly." },
+      },
+      {
+        '@type': 'Question',
+        name: "Will customers know they're texting a bot?",
+        acceptedAnswer: { '@type': 'Answer', text: "The first message is clearly from your business, not posed as a human. Most customers don't mind — they care that someone responded quickly. You can customize the tone and wording to match your brand." },
+      },
+      {
+        '@type': 'Question',
+        name: 'Do customers need an app?',
+        acceptedAnswer: { '@type': 'Answer', text: 'No. The customer receives and replies by normal SMS.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'What information does it collect?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Name, callback number, address, service issue, urgency, and any notes needed for a useful callback.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Is there a long-term contract?',
+        acceptedAnswer: { '@type': 'Answer', text: 'No. Start with a free 14-day pilot. Continue only if it proves useful.' },
+      },
+    ],
+  },
+]
 
 function App() {
   const [modalOpen, setModalOpen] = useState(false)
@@ -11,30 +74,21 @@ function App() {
 
   return (
     <>
-      {/* Nav */}
-      <nav>
-        <div className="nav-inner">
-          <a href="#" className="logo">
-            <div className="logo-icon">
-              <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" /></svg>
-            </div>
-            Missed Call Agent
-          </a>
-          <ul className="nav-links">
-            <li><a href="#how-it-works">How it works</a></li>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#pilot">Pilot</a></li>
-            <li><a href="#faq">FAQ</a></li>
-          </ul>
-          <button className="btn btn-primary" onClick={openModal}>Request free pilot</button>
-        </div>
-      </nav>
+      <SEOHead
+        title="Missed Call Agent — AI Missed Call Text Back for Home Service Businesses"
+        description="Missed Call Agent instantly texts back missed calls for HVAC, plumbing, and electrical businesses. Capture qualified leads 24/7 with AI-powered SMS intake."
+        canonical="https://missedcallagent.com/"
+        schema={SCHEMA}
+        ogImage="https://missedcallagent.com/og-image.png"
+      />
+
+      <Nav onOpenModal={openModal} />
 
       {/* Hero */}
       <section className="hero">
         <div className="container">
           <div className="hero-content">
-            <h1>Stop losing customers to missed calls.</h1>
+            <h1>Stop Losing Home Service Leads to Missed Calls</h1>
             <p className="lead">Built for home service businesses where the owner is on jobs, with customers, or unavailable when the phone rings. When you miss a call, Missed Call Agent texts back immediately, gathers the job details, and sends you a qualified lead summary.</p>
             <div className="hero-cta">
               <button className="btn btn-primary btn-lg" onClick={openModal}>Request free 14-day pilot</button>
@@ -146,6 +200,37 @@ function App() {
         </div>
       </section>
 
+      {/* Industry Solutions */}
+      <section className="industry-solutions">
+        <div className="container">
+          <div style={{ textAlign: 'center', maxWidth: 560, margin: '0 auto' }}>
+            <span className="section-label">Industry solutions</span>
+            <h2>Purpose-built for your trade</h2>
+            <p className="lead" style={{ marginTop: 16 }}>See how Missed Call Agent works specifically for your business type.</p>
+          </div>
+          <div className="features-grid" style={{ marginTop: 48 }}>
+            <a href="/hvac-missed-call-solution" className="feature-card solution-card">
+              <div className="solution-emoji">❄️</div>
+              <h3>HVAC Missed Call Solution</h3>
+              <p>Emergency AC and heating calls can't wait. Capture every high-urgency HVAC lead, even when you're on a job or in an attic.</p>
+              <span className="solution-link">Learn more →</span>
+            </a>
+            <a href="/plumbing-missed-call-solution" className="feature-card solution-card">
+              <div className="solution-emoji">🔧</div>
+              <h3>Plumbing Missed Call Solution</h3>
+              <p>Burst pipes and flooding emergencies need fast response. Never lose a high-ticket plumbing job to voicemail again.</p>
+              <span className="solution-link">Learn more →</span>
+            </a>
+            <a href="/electrical-missed-call-solution" className="feature-card solution-card">
+              <div className="solution-emoji">⚡</div>
+              <h3>Electrical Missed Call Solution</h3>
+              <p>Panel upgrades, new construction, and electrical emergencies. Capture every lead while you're on the job site.</p>
+              <span className="solution-link">Learn more →</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Pricing / Pilot */}
       <section id="pilot" className="pricing">
         <div className="container">
@@ -211,13 +296,7 @@ function App() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer>
-        <div className="footer-inner">
-          <div className="footer-logo">Missed Call Agent</div>
-          <p>Built for owner-operated home service businesses.</p>
-        </div>
-      </footer>
+      <Footer />
 
       <PilotModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </>
