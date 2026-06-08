@@ -97,6 +97,7 @@ h3 { font-size:1.15rem; font-weight:700; }
 .plan-desc { font-size:.875rem; color:var(--muted); margin-bottom:24px; padding-bottom:24px; border-bottom:1px solid var(--border); }
 .plan-features { list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:28px; }
 .plan-features li { display:flex; align-items:flex-start; gap:10px; font-size:.875rem; }
+.plan-features li::before { content:'✓'; color:var(--green); font-weight:700; flex-shrink:0; }
 
 .faq-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:56px; }
 .faq-item { background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:24px; }
@@ -160,20 +161,18 @@ footer p { font-size:.82rem; }
 .breadcrumb a { color:var(--muted); text-decoration:none; transition:color .15s; }
 .breadcrumb a:hover { color:var(--text); }
 
-/* Vertical hero (single column) */
+/* Vertical hero (sub-pages) */
 .hero-vert .container { display:block; }
 .hero-vert-content { max-width:760px; }
 
-/* Industry solutions section */
+/* Industry solutions */
 .industry-solutions { background:white; }
-
-/* Solution cards (feature-card as link) */
 .solution-card { text-decoration:none; color:inherit; display:block; transition:box-shadow .15s,transform .1s; }
 .solution-card:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); }
 .solution-emoji { font-size:2rem; margin-bottom:12px; }
 .solution-link { display:inline-block; margin-top:12px; font-size:.875rem; color:var(--accent); font-weight:600; }
 
-/* Other solutions section at bottom of vertical pages */
+/* Other solutions (sub-page bottom) */
 .other-solutions { background:white; }
 .other-solutions-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; max-width:600px; margin:48px auto 0; }
 .solution-link-card { text-decoration:none; color:inherit; transition:box-shadow .15s,transform .1s; }
@@ -184,21 +183,3 @@ footer p { font-size:.82rem; }
 .footer-nav { display:flex; gap:20px; flex-wrap:wrap; align-items:center; }
 .footer-nav a { color:#a8a29e; text-decoration:none; font-size:.82rem; transition:color .15s; }
 .footer-nav a:hover { color:white; }
-
-/* Admin */
-.admin-login-wrap { min-height:100vh; display:flex; align-items:center; justify-content:center; background:var(--bg); padding:24px; }
-.admin-login-box { background:white; border:1px solid var(--border); border-radius:20px; padding:40px 36px; width:100%; max-width:380px; box-shadow:var(--shadow-md); }
-.admin-login-logo { text-align:center; margin-bottom:28px; }
-.admin-wrap { min-height:100vh; background:var(--bg); display:flex; flex-direction:column; }
-.admin-header { background:white; border-bottom:1px solid var(--border); padding:0 28px; height:64px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:10; }
-.admin-body { padding:32px 28px; flex:1; }
-.admin-empty { text-align:center; color:var(--muted); padding:64px 0; font-size:.95rem; }
-.leads-table-wrap { overflow-x:auto; background:white; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow-sm); }
-.leads-table { width:100%; border-collapse:collapse; font-size:.875rem; }
-.leads-table th { text-align:left; font-size:.75rem; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); padding:12px 16px; border-bottom:1px solid var(--border); white-space:nowrap; background:var(--bg); }
-.leads-table td { padding:14px 16px; border-bottom:1px solid var(--border); vertical-align:top; }
-.leads-table tr:last-child td { border-bottom:none; }
-.leads-table tr:hover td { background:#fafaf9; }
-.trade-badge { background:var(--accent-lt); color:var(--accent-dk); font-size:.75rem; font-weight:600; padding:3px 8px; border-radius:6px; white-space:nowrap; }
-.copy-btn { border:none; background:none; cursor:pointer; color:var(--muted); font-size:.85rem; padding:2px 4px; border-radius:4px; transition:color .15s,background .15s; }
-.copy-btn:hover { color:var(--accent); background:var(--accent-lt); }

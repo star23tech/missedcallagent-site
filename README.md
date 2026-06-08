@@ -1,21 +1,28 @@
 # Missed Call Agent
 
-Marketing site for [missedcallagent.com](https://missedcallagent.com) — a React + Vite SPA hosted on GitHub Pages.
+Marketing site for [missedcallagent.com](https://missedcallagent.com) — plain HTML/CSS/JS hosted on GitHub Pages.
 
-## Local development
+## Structure
 
-```bash
-cd frontend
-npm install
-npm run dev
 ```
-
-Frontend runs at http://localhost:5173
+index.html                          Home page
+hvac-missed-call-solution/          HVAC landing page
+plumbing-missed-call-solution/      Plumbing landing page
+electrical-missed-call-solution/    Electrical landing page
+styles.css                          All styles
+script.js                           Modal + Formspree form logic
+```
 
 ## Deployment
 
-Pushing to `main` triggers the GitHub Actions workflow (`.github/workflows/deploy.yml`), which builds the frontend and deploys it to the `gh-pages` branch automatically.
+Push to `main`. GitHub Pages serves the repo root directly — no build step.
+
+In repo Settings → Pages → Source: **Deploy from a branch** → Branch: `main` / folder: `/ (root)`.
 
 ## Lead capture
 
-Pilot request form submissions are handled by [Formspree](https://formspree.io). Leads are viewable in the Formspree dashboard.
+Pilot request form submissions go to [Formspree](https://formspree.io) (form ID `mbdeoqlq`). Leads are viewable in the Formspree dashboard.
+
+## Editing
+
+Open any `.html` file directly. No build tools, no npm, no dependencies.
