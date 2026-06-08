@@ -56,9 +56,9 @@ export default function PilotModal({ isOpen, onClose }: Props) {
     setError('')
     setSubmitting(true)
     try {
-      const res = await fetch('/api/lead', {
+      const res = await fetch('https://formspree.io/f/mbdeoqlq', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           name: form.name,
           business_name: form.business_name,
@@ -71,7 +71,7 @@ export default function PilotModal({ isOpen, onClose }: Props) {
       })
       if (!res.ok) {
         const data = await res.json().catch(() => ({}))
-        throw new Error(data.detail || 'Submission failed. Please try again.')
+        throw new Error(data.error || 'Submission failed. Please try again.')
       }
       setSuccess(true)
       setForm(EMPTY)
